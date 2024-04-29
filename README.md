@@ -1,6 +1,10 @@
 # sv-lora-sender-receiver
 Programa de exemplo de Sender &amp; Receiver utilizando LoRa
 
+- Versao....: 1.0
+- Data......: 28/04/2024
+- Autor.....: Sidney Visentini
+
 # Preparação do ambiente de Desenvolvimento
 https://docs.heltec.org/en/node/esp32/quick_start.html
 

@@ -13,3 +13,12 @@ https://www.youtube.com/watch?v=FizuHaatRAs&t=390s
 
 # Receiver tem um led que liga de acordo com o botao do Sender
 https://www.usinainfo.com.br/blog/esp32-lora-wifi-sx1278/
+
+# Linux
+- Listas as portas seriais (USB)
+
+dmesg | grep ttyUSBD
+
+- Liberar acesso a porta
+
+sudo chmod a+rw /dev/ttyUSB0

@@ -1,8 +1,10 @@
 #include "heltec.h"
 #define BAND 433E6
 
-int SENSOR = 52;
-const int ACTIVE = 0;
+int SENSOR = 12;
+const int ACTIVE = 1;
+int lastState = 1;
+int currentState = 1;
 unsigned long contador;
 
 void setup () {
@@ -13,31 +15,35 @@ void setup () {
 
   Heltec.display->init();
   Heltec.display->flipScreenVertically();
-  Heltec.display->setFont(ArialMT_Plain_10);
-  Heltec.display->drawString(0, 0,  "Sender Iniciado!");
-  Heltec.display->drawString(0, 10, "Esperando...");
+  Heltec.display->setFont(ArialMT_Plain_16);
+    Heltec.display->drawString(0, 0,  "SENDER");
+    Heltec.display->drawString(0, 20, "Telemetria");
+    Heltec.display->drawString(0, 40, "Esperando ..." );
   Heltec.display->display();
   delay(1000);
 
 }
 
 void loop () {
+  currentState = digitalRead(SENSOR);
 
-  if (digitalRead(SENSOR) == ACTIVE){
+  if (lastState == 0 && currentState == 1){
     contador++;
     LoRa.beginPacket();
-    LoRa.print('1');
+    LoRa.print(contador);
     LoRa.endPacket();
 
     Heltec.display->init();
     Heltec.display->flipScreenVertically();
-    Heltec.display->setFont(ArialMT_Plain_10);
-    Heltec.display->drawString(0, 0,  "Telemetria - SENDER");
-    Heltec.display->drawString(0, 10, "Enviados: " + String(contador) );
+    Heltec.display->setFont(ArialMT_Plain_16);
+    Heltec.display->drawString(0, 0,  "SENDER");
+    Heltec.display->drawString(0, 20, "Telemetria");
+    Heltec.display->drawString(0, 40, "Contador: " + String(contador) );
     Heltec.display->display();
-    delay(1000);
+    delay(100);
 
   }
+  lastState = currentState;
 
 
 }

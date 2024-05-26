@@ -5,6 +5,12 @@ Programa de exemplo de Sender &amp; Receiver utilizando LoRa
 - Data......: 28/04/2024
 - Autor.....: Sidney Visentini
 
+OBS:
+Para funcionar com a placa V2, TEM QUE USAR A VERSAO 1.0.9
+
+![image](https://github.com/svisentini/sv-lora-sender-receiver/assets/15691421/e5fb8715-60c4-48c6-8b76-adf414037e08)
+
+
 # Preparação do ambiente de Desenvolvimento
 https://docs.heltec.org/en/node/esp32/quick_start.html
 

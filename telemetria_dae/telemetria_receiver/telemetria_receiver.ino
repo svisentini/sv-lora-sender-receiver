@@ -1,7 +1,7 @@
 #include "heltec.h"
  
 #define BAND 433E6
-#define pinRele 25
+#define pinRele 12
 
 char st;
 unsigned long contador;
@@ -13,9 +13,10 @@ void setup () {
   
   Heltec.display->init();
   Heltec.display->flipScreenVertically();
-  Heltec.display->setFont(ArialMT_Plain_10);
-  Heltec.display->drawString(0, 0,  "Receiver Iniciado!");
-  Heltec.display->drawString(0, 10, "Esperando...");
+  Heltec.display->setFont(ArialMT_Plain_16);
+    Heltec.display->drawString(0, 0,  "RECEIVER");
+    Heltec.display->drawString(0, 20, "Telemetria");
+    Heltec.display->drawString(0, 40, "Esperando ..." );
   Heltec.display->display();
   delay(1000);
 
@@ -32,9 +33,10 @@ void loop () {
     
     Heltec.display->init();
     Heltec.display->flipScreenVertically();
-    Heltec.display->setFont(ArialMT_Plain_10);
-    Heltec.display->drawString(0, 0,  "Telemetria - RECEIVER");
-    Heltec.display->drawString(0, 10, "Recebidos: " + String(contador) );
+  Heltec.display->setFont(ArialMT_Plain_16);
+    Heltec.display->drawString(0, 0,  "RECEIVER");
+    Heltec.display->drawString(0, 20, "Telemetria");
+    Heltec.display->drawString(0, 40, "Recebidos: " + String(contador) );
     Heltec.display->display();
     delay(1000);
     
@@ -47,4 +49,3 @@ void recebido(int packetSize) {
   st = '1';
   contador++;
 }
-

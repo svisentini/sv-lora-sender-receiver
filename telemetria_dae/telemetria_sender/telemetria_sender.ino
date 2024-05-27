@@ -1,5 +1,5 @@
 #include "heltec.h"
-#define BAND 433E6
+#define BAND 915E6
 
 int SENSOR = 12;
 const int ACTIVE = 1;
@@ -9,6 +9,16 @@ unsigned long contador;
 
 void setup () {
   Heltec.begin(true, true, true, true, BAND);
+
+  Heltec.display->clear();
+  delay(100);
+  LoRa.setSpreadingFactor(12);
+  LoRa.setSignalBandwidth(250E3);
+  LoRa.setCodingRate4(5);
+  LoRa.setPreambleLength(6);
+  LoRa.setSyncWord(0x12);
+  LoRa.crc();
+  delay(100);
 
   pinMode(SENSOR, INPUT);
   contador = 0UL;
@@ -30,6 +40,7 @@ void loop () {
   if (lastState == 0 && currentState == 1){
     contador++;
     LoRa.beginPacket();
+    // LoRa.setTxPower(20,RF_PACONFIG_PASELECT_PABOOST);
     LoRa.print(contador);
     LoRa.endPacket();
 

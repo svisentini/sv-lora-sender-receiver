@@ -47,7 +47,7 @@ void loop () {
     Heltec.display->flipScreenVertically();
   Heltec.display->setFont(ArialMT_Plain_16);
     Heltec.display->drawString(0, 0,  "RECEIVER");
-    Heltec.display->drawString(0, 20, "Telemetria");
+    Heltec.display->drawString(0, 20, "RSSI: " + String(LoRa.packetRssi(), DEC) );
     Heltec.display->drawString(0, 40, "Recebidos: " + String(contador) );
     Heltec.display->display();
     delay(1000);

@@ -1,7 +1,7 @@
 #include "heltec.h"
 #define BAND 915E6
 
-int SENSOR = 12;
+int SENSOR = 32;
 const int ACTIVE = 1;
 int lastState = 1;
 int currentState = 1;

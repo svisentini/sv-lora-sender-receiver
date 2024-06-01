@@ -1,7 +1,7 @@
 #include "heltec.h"
  
 #define BAND 915E6
-#define pinRele 12
+#define pinRele 32
 
 char st;
 unsigned long contador;

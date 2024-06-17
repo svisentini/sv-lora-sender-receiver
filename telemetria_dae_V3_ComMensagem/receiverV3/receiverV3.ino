@@ -28,6 +28,8 @@
 //  This allows predefined pins to be used.  Compatible with Heltec and Espressif libraries.
 #include <pins_arduino.h>
 
+#define pinRele 37
+
 int count = 0;
 int countErro = 0;
 // Initialize the OLED display using Arduino Wire:
@@ -88,6 +90,7 @@ void setup() {
       ;
   }
 
+  pinMode(pinRele, OUTPUT);
   // set the function that will be called
   // when new packet is received
   radio.setPacketReceivedAction(setFlag);
@@ -187,6 +190,11 @@ void loop() {
       Serial.println(F(" Hz"));
 
       count++;
+
+      digitalWrite(pinRele, 1);
+      delay(200);
+      digitalWrite(pinRele, 0);
+      delay(100);
 
     } else if (state == RADIOLIB_ERR_CRC_MISMATCH) {
       // packet was received, but is malformed

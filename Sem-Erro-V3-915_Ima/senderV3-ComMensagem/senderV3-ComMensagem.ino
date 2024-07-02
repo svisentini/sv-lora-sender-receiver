@@ -225,4 +225,5 @@ void loop() {
     }
   }
   lastState = currentState;
+  delay(100);
 }
